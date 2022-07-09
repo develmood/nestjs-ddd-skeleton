@@ -5,4 +5,3 @@ export * from './lib/models/user';
 export * from './lib/values/password';
 export * from './lib/values/verification-code';
 export * from './lib/events/onboarding.events';
-export * from '../../application/src/lib/onboarding-exception.message';
