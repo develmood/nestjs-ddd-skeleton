@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "domain",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Domain name",
+      "x-prompt": "The name of the domain?",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "buildable": {
+      "type": "boolean",
+      "description": "Create buildable libraries"
+    },
+    "skipBabel": {
+      "type": "boolean",
+      "description": "Skip babel"
+    }
+  },
+  "required": ["name"]
+}

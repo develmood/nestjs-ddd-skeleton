@@ -1,0 +1,11 @@
+import { Module } from '@nestjs/common';
+import { <%= domainModuleName %>DomainModule } from '<%= namespace %>/<%= domainName %>/domain';
+import { <%= domainModuleName %>InfrastructureModule } from '<%= namespace %>/<%= domainName %>/infrastructure';
+
+@Module({
+    imports: [
+        <%= domainModuleName %>DomainModule,
+        <%= domainModuleName %>InfrastructureModule,
+    ]
+})
+export class <%= domainModuleName %>ApplicationModule {}

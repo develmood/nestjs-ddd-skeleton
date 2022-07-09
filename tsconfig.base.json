@@ -1,0 +1,41 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nestjs-ddd-skeleton/onboarding/application": [
+        "libs/onboarding/application/src/index.ts"
+      ],
+      "@nestjs-ddd-skeleton/onboarding/domain": [
+        "libs/onboarding/domain/src/index.ts"
+      ],
+      "@nestjs-ddd-skeleton/onboarding/infrastructure": [
+        "libs/onboarding/infrastructure/src/index.ts"
+      ],
+      "@nestjs-ddd-skeleton/shared-servicesbak": [
+        "libs/shared/servicesbak/src/index.ts"
+      ],
+      "@nestjs-ddd-skeleton/shared/guards": ["libs/shared/guards/src/index.ts"],
+      "@nestjs-ddd-skeleton/shared/mappers": [
+        "libs/shared/mappers/src/index.ts"
+      ],
+      "@nestjs-ddd-skeleton/shared/orm": ["libs/shared/orm/src/index.ts"],
+      "@nestjs-ddd-skeleton/shared/services": [
+        "libs/shared/services/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
