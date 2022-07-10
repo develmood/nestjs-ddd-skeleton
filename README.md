@@ -84,9 +84,7 @@ Each layer is its own module, subject to certain rules. These rules are describe
 
 ### Boundary Rules
 
-The boundary rules can be found in eslintrc.json on the root level in the configuration for `@nrwl/nx/enforce-module-boundaries`. Here it is described which dependencies of the different modules among each other are possible.
-
-Unfortunately, at the moment these are only created for the domain itself. A configuration for the individual layers, which would definitely increase the code quality, would have to be created manually. However, this point will be automated in the near future.
+The basic boundary rules are set in eslintrc.json on the root level in the configuration for `@nrwl/nx/enforce-module-boundaries`. Every new generated domain adds a new block with a new rule to isolate domains from each other. 
 
 ### Custom Workspace Generator
 
