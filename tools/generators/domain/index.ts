@@ -4,10 +4,10 @@ import {
   installPackagesTask,
   getWorkspaceLayout,
 } from '@nrwl/devkit';
-import {libraryGenerator} from '@nrwl/nest';
 import { DomainOptions } from "./schema";
 import {camelize, capitalize, dasherize} from "@nrwl/workspace/src/utils/strings";
 import {generateModuleFiles, updateDepConstraints} from "../utils";
+import { generateLibrary } from '../utils/generate-library';
 
 export default async function (tree: Tree, schema: DomainOptions) {
   const workspaceScope = `@${getWorkspaceLayout(tree).npmScope}`;
@@ -16,32 +16,9 @@ export default async function (tree: Tree, schema: DomainOptions) {
   const domainNameCapitalized = capitalize(domainNameCamelized);
   const domainRootPath = `libs/${domainName}`;
 
-  // create application layer
-  await libraryGenerator(tree, {
-    name: 'application',
-    directory: domainName,
-    tags: `domain:${domainName}, type:application`,
-    buildable: schema.buildable,
-    standaloneConfig: true,
-  });
-
-  // create domain layer
-  await libraryGenerator(tree, {
-    name: 'domain',
-    directory: domainName,
-    tags: `domain:${domainName}, type:domain`,
-    buildable: schema.buildable,
-    standaloneConfig: true,
-  });
-
-  // create infrastructure layer
-  await libraryGenerator(tree, {
-    name: 'infrastructure',
-    directory: domainName,
-    tags: `domain:${domainName}, type:infrastructure`,
-    buildable: schema.buildable,
-    standaloneConfig: true,
-  });
+  await generateLibrary(tree, schema, 'application', workspaceScope, domainName)
+  await generateLibrary(tree, schema, 'domain', workspaceScope, domainName)
+  await generateLibrary(tree, schema, 'infrastructure', workspaceScope, domainName)
 
   updateDepConstraints(tree, (depConst => {
     depConst.push({
