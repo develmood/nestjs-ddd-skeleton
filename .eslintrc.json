@@ -38,6 +38,10 @@
                   "type:domain",
                   "type:shared"
                 ]
+              },
+              {
+                "sourceTag": "domain:onboarding",
+                "onlyDependsOnLibsWithTags": ["domain:onboarding"]
               }
             ]
           }
