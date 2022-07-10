@@ -6,13 +6,14 @@ import {
 } from '@nrwl/devkit';
 import {libraryGenerator} from '@nrwl/nest';
 import { DomainOptions } from "./schema";
-import {camelize, dasherize} from "@nrwl/workspace/src/utils/strings";
+import {camelize, capitalize, dasherize} from "@nrwl/workspace/src/utils/strings";
 import {generateModuleFiles, updateDepConstraints} from "../utils";
 
 export default async function (tree: Tree, schema: DomainOptions) {
   const workspaceScope = `@${getWorkspaceLayout(tree).npmScope}`;
   const domainName = dasherize(schema.name);
   const domainNameCamelized = camelize(schema.name);
+  const domainNameCapitalized = capitalize(domainNameCamelized);
   const domainRootPath = `libs/${domainName}`;
 
   // create application layer
@@ -45,13 +46,13 @@ export default async function (tree: Tree, schema: DomainOptions) {
   updateDepConstraints(tree, (depConst => {
     depConst.push({
       sourceTag: `domain:${domainName}`,
-      onlyDependsOnLibsWithTags: [`domain:${domainName}, type:shared`]
+      onlyDependsOnLibsWithTags: [`domain:${domainName}`]
     })
   }));
 
-  generateModuleFiles(tree, 'application', domainRootPath, domainNameCamelized, domainName, workspaceScope);
-  generateModuleFiles(tree, 'domain', domainRootPath, domainNameCamelized, domainName, workspaceScope);
-  generateModuleFiles(tree, 'infrastructure', domainRootPath, domainNameCamelized, domainName, workspaceScope);
+  generateModuleFiles(tree, 'application', domainRootPath, domainNameCapitalized, domainName, workspaceScope);
+  generateModuleFiles(tree, 'domain', domainRootPath, domainNameCapitalized, domainName, workspaceScope);
+  generateModuleFiles(tree, 'infrastructure', domainRootPath, domainNameCapitalized, domainName, workspaceScope);
 
 
   await formatFiles(tree);

@@ -53,5 +53,5 @@
       }
     }
   },
-  "tags": ["type:app"]
+  "tags": ["app: api", "type:app"]
 }
