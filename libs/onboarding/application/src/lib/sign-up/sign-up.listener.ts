@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { OnboardingEvents, User } from '@nestjs-ddd-skeleton/onboarding/domain';
+import { OnboardingEvents, User } from '@nestjs-ddd-skeleton/onboarding-domain';
 import { OnEvent } from '@nestjs/event-emitter';
-import {UserDataService} from "@nestjs-ddd-skeleton/onboarding/infrastructure";
+import { UserDataService } from '@nestjs-ddd-skeleton/onboarding-infrastructure';
 
 @Injectable()
 export class SignUpListener {

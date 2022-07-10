@@ -9,20 +9,19 @@
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
           {
-            "enforceBuildableLibDependency": true,
             "allow": [],
             "depConstraints": [
               {
                 "sourceTag": "type:app",
-                "onlyDependsOnLibsWithTags": [
-                  "type:app",
-                  "type:application"
-                ]
+                "onlyDependOnLibsWithTags": ["type:application"]
+              },
+              {
+                "sourceTag": "type:shared",
+                "onlyDependOnLibsWithTags": ["type:shared"]
               },
               {
                 "sourceTag": "type:application",
-                "onlyDependsOnLibsWithTags": [
-                  "type:application",
+                "onlyDependOnLibsWithTags": [
                   "type:domain",
                   "type:infrastructure",
                   "type:shared"
@@ -30,27 +29,14 @@
               },
               {
                 "sourceTag": "type:domain",
-                "onlyDependsOnLibsWithTags": [
-                  "type:domain"
-                ]
+                "notDependOnLibsWithTags": ["*"]
               },
               {
                 "sourceTag": "type:infrastructure",
-                "onlyDependsOnLibsWithTags": [
+                "onlyDependOnLibsWithTags": [
+                  "type:application",
                   "type:domain",
-                  "type:infrastructure"
-                ]
-              },
-              {
-                "sourceTag": "type:shared",
-                "onlyDependsOnLibsWithTags": [
                   "type:shared"
-                ]
-              },
-              {
-                "sourceTag": "domain:onboarding",
-                "onlyDependsOnLibsWithTags": [
-                  "domain:onboarding"
                 ]
               }
             ]

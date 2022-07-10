@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { OnboardingDomainModule } from '@nestjs-ddd-skeleton/onboarding/domain';
+import { OnboardingDomainModule } from '@nestjs-ddd-skeleton/onboarding-domain';
 import {
   OnboardingInfrastructureModule,
   UserDataService,
-} from '@nestjs-ddd-skeleton/onboarding/infrastructure';
+} from '@nestjs-ddd-skeleton/onboarding-infrastructure';
 import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
 import { LocalStrategy } from './auth/strategies/local.strategy';
@@ -12,8 +12,8 @@ import { jwtConstants, JwtStrategy } from './auth/strategies/jwt.strategy';
 import { OnboardingController } from './onboarding.controller';
 import { SignUpService } from './sign-up/sign-up.service';
 import { SignUpListener } from './sign-up/sign-up.listener';
-import {SharedServicesModule} from "@nestjs-ddd-skeleton/shared/services";
-import {EmailUniqueRule} from "./sign-up/validators/email-unique.validator";
+import { SharedServicesModule } from '@nestjs-ddd-skeleton/shared-services';
+import { EmailUniqueRule } from './sign-up/validators/email-unique.validator';
 
 @Module({
   imports: [

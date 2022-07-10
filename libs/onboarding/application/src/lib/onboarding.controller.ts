@@ -5,24 +5,32 @@ import {
   Param,
   Post,
   Request,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
-import {SignUpRequest} from "./sign-up/sign-up.request";
-import {JwtAuthGuard, LocalAuthGuard} from "@nestjs-ddd-skeleton/shared/guards";
-import {SignInResponse} from "./sign-in/sign-in.response";
-import {AuthService} from "./auth/auth.service";
-import {SignUpService} from "./sign-up/sign-up.service";
-import {JsonResponse, successResponse} from "@nestjs-ddd-skeleton/shared/mappers";
+import { SignUpRequest } from './sign-up/sign-up.request';
+import {
+  JwtAuthGuard,
+  LocalAuthGuard,
+} from '@nestjs-ddd-skeleton/shared-guards';
+import { SignInResponse } from './sign-in/sign-in.response';
+import { AuthService } from './auth/auth.service';
+import { SignUpService } from './sign-up/sign-up.service';
+import {
+  JsonResponse,
+  successResponse,
+} from '@nestjs-ddd-skeleton/shared-mappers';
 
 @Controller('onboarding')
 export class OnboardingController {
   constructor(
     private authService: AuthService,
-    private signUpService: SignUpService,
+    private signUpService: SignUpService
   ) {}
 
   @Post('sign-up')
-  async signUp(@Body() request: SignUpRequest): Promise<JsonResponse<SignInResponse>> {
+  async signUp(
+    @Body() request: SignUpRequest
+  ): Promise<JsonResponse<SignInResponse>> {
     await this.signUpService.createUser(request);
     return successResponse();
   }
@@ -42,6 +50,6 @@ export class OnboardingController {
   @Get('test')
   @UseGuards(JwtAuthGuard)
   tokenGuardedRoute() {
-    return 'test'
+    return 'test';
   }
 }

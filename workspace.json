@@ -6,9 +6,9 @@
     "onboarding-application": "libs/onboarding/application",
     "onboarding-domain": "libs/onboarding/domain",
     "onboarding-infrastructure": "libs/onboarding/infrastructure",
+    "shared-entities": "libs/shared/entities",
     "shared-guards": "libs/shared/guards",
     "shared-mappers": "libs/shared/mappers",
-    "shared-orm": "libs/shared/orm",
     "shared-services": "libs/shared/services"
   }
 }

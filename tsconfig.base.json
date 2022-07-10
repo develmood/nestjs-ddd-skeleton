@@ -15,24 +15,23 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nestjs-ddd-skeleton/onboarding/application": [
+      "@nestjs-ddd-skeleton/onboarding-application": [
         "libs/onboarding/application/src/index.ts"
       ],
-      "@nestjs-ddd-skeleton/onboarding/domain": [
+      "@nestjs-ddd-skeleton/onboarding-domain": [
         "libs/onboarding/domain/src/index.ts"
       ],
-      "@nestjs-ddd-skeleton/onboarding/infrastructure": [
+      "@nestjs-ddd-skeleton/onboarding-infrastructure": [
         "libs/onboarding/infrastructure/src/index.ts"
       ],
-      "@nestjs-ddd-skeleton/shared-servicesbak": [
-        "libs/shared/servicesbak/src/index.ts"
+      "@nestjs-ddd-skeleton/shared-entities": [
+        "libs/shared/entities/src/index.ts"
       ],
-      "@nestjs-ddd-skeleton/shared/guards": ["libs/shared/guards/src/index.ts"],
-      "@nestjs-ddd-skeleton/shared/mappers": [
+      "@nestjs-ddd-skeleton/shared-guards": ["libs/shared/guards/src/index.ts"],
+      "@nestjs-ddd-skeleton/shared-mappers": [
         "libs/shared/mappers/src/index.ts"
       ],
-      "@nestjs-ddd-skeleton/shared/orm": ["libs/shared/orm/src/index.ts"],
-      "@nestjs-ddd-skeleton/shared/services": [
+      "@nestjs-ddd-skeleton/shared-services": [
         "libs/shared/services/src/index.ts"
       ]
     }
