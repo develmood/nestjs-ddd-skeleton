@@ -4,7 +4,16 @@ This project was generated using [Nx](https://nx.dev) and contains an interpreta
 
 > Currently, the skeleton is still under construction, but can allready be used. Inspirations are allways welcome!
 
-## tl,dr
+---
+## Features
+- [DDD Structure & Boundary Rules](#ddd-structure--boundary-rules)
+- [Custom Workspace Generator](#custom-workspace-generator)
+- [Global Configuration](#global-configuration)
+- [ORM](#orm)
+- [Authentication](#authentication)
+- [Containerized Mail server](#containerized-mail-server)
+---
+### Quick Start
 ```
 git clone
 cd nestjs-ddd-skeleton
@@ -17,17 +26,20 @@ Copy `./config/env/example.env.dev` to `./config/.env.dev` and replace the value
 ```
 npm start
 ```
+---
+## DDD Structure & Boundary Rules
 
-## Features
-- Global Configuration
-- ORM
-- Authentication
-- DDD Structure
-- Boundary Rules
-- Custom Workspace Generator
-- Containerized Mail server
+In order to be able to map a DDD structure, a three-layer structure is used. The following image is just an example:
 
-### Global Configuration
+![dependecy-graph-example](https://user-images.githubusercontent.com/13387471/178604936-9b2998f2-5814-4516-98e4-e1f5bff252ce.png)
+
+Each layer is its own module, subject to certain rules. The basic boundary rules are set in eslintrc.json on the root level in the configuration for `@nrwl/nx/enforce-module-boundaries`. Every new generated domain adds a new block with a new rule to isolate domains from each other.
+
+## Custom Workspace Generator
+
+In the `tools` section at root level you will find a generator for domains. This generator creates a folder with the structure described above and creates a basic boundary rule.
+
+## Global Configuration
 > @nestjs/config
 
 The project settings are made up of the following components:
@@ -48,7 +60,7 @@ With this value the correct path can now be set for the `ConfigModule`.
 
 As you can see, in the `ConfigModule` the file `./config/configuration.ts` is included. Here the environment variables are assigned to usable properties, which can then be included in the code with the `ConfigService`.
 
-### ORM
+## ORM
 
 > @nestjs/typeorm && typeorm
 
@@ -62,35 +74,13 @@ A conscious decision was made to store the entities in the shared area in order 
 
 But of course you are free in the decision to bind entities to domains.
 
-### Authentication
+## Authentication
 
 > @nestjs/passport && passport
 
 Standard implementation from https://docs.nestjs.com/security/authentication
 
-### DDD Structure
-
-In order to be able to map a DDD structure, a three-layer structure is used:
-
-```
-libs
--- my-domain-name
----- application
----- domain
----- infrastructure
-```
-
-Each layer is its own module, subject to certain rules. These rules are described in the following chapter.
-
-### Boundary Rules
-
-The basic boundary rules are set in eslintrc.json on the root level in the configuration for `@nrwl/nx/enforce-module-boundaries`. Every new generated domain adds a new block with a new rule to isolate domains from each other. 
-
-### Custom Workspace Generator
-
-In the `tools` section at root level you will find a generator for domains. This generator creates a folder with the structure described above and creates a basic boundary rule.
-
-### Containerized Mail server
+## Containerized Mail server
 > Docker image: mailhog/mailhog
 
 To relieve you of setting up an SMTP service during development time, a Docker image was set up with `mailhog`. You will need a running docker instance.
