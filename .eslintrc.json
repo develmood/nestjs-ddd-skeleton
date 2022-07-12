@@ -34,7 +34,6 @@
               {
                 "sourceTag": "type:infrastructure",
                 "onlyDependOnLibsWithTags": [
-                  "type:application",
                   "type:domain",
                   "type:shared"
                 ]
