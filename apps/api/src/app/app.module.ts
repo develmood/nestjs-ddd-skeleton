@@ -7,12 +7,10 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from '../../../../config/configuration';
-import {OnboardingDomainModule} from '@nestjs-ddd-skeleton/onboarding-domain';
 
 @Module({
   imports: [
     OnboardingApplicationModule,
-    OnboardingDomainModule,
     EventEmitterModule.forRoot(),
     ConfigModule.forRoot({
       envFilePath: [
