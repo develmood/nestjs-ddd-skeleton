@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { <%= domainModuleName %>DomainModule } from '<%= namespace %>/<%= domainName %>/domain';
+import { <%= domainModuleName %>DomainModule } from '<%= namespace %>/<%= domainName %>-domain';
 
 @Module({
     imports: [
