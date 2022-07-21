@@ -9,7 +9,8 @@
     "build": "nx build && npm run assets",
     "build:prod": "nx build -c production && npm run assets",
     "test": "nx test",
-    "assets": "cp -rv apps/api/src/assets dist/apps/api"
+    "assets": "cp -rv apps/api/src/assets dist/apps/api",
+    "typeorm": "ts-node --project tsconfig.ts-node.json node_modules/typeorm/cli.js -d ./apps/api/src/app/app.data-source.ts"
   },
   "private": true,
   "dependencies": {
