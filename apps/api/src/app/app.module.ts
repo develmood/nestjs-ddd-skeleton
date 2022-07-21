@@ -6,7 +6,8 @@ import { OnboardingApplicationModule } from '@nestjs-ddd-skeleton/onboarding-app
 import { MailerModule } from '@nestjs-modules/mailer';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import configuration from '../../../../config/configuration';
+import typeormConfig from '../config/typeorm.config';
+import mailhogConfig from '../config/mailhog.config';
 
 @Module({
   imports: [
@@ -14,11 +15,14 @@ import configuration from '../../../../config/configuration';
     EventEmitterModule.forRoot(),
     ConfigModule.forRoot({
       envFilePath: [
-        `${process.cwd()}/config/env/.env.${process.env.APP_STAGE}`,
+        `${process.cwd()}/apps/api/src/config/env/.env.${process.env.APP_STAGE}`,
       ],
       isGlobal: true,
       cache: false,
-      load: [configuration],
+      load: [() => ({
+        db: typeormConfig(),
+        mail: mailhogConfig(),
+      })],
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
