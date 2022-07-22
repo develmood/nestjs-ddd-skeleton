@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OnboardingApplicationModule } from '@nestjs-ddd-skeleton/onboarding-application';
 import { MailerModule } from '@nestjs-modules/mailer';
@@ -41,6 +40,5 @@ import mailhogConfig from '../config/mailhog.config';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
